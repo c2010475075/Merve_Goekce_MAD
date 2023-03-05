@@ -8,12 +8,10 @@ fun main() {
         }
     }
     val randomNum = randomList.joinToString(separator = "")
-    println("A random 4-digit number without repeating digits has been generated.")
 
-    // Play game
     var guess = ""
-    var isGameOver = false
-    while (!isGameOver) {
+    var guessRight = false
+    while (!guessRight) {
         while (guess.length != 4) {
             print("Guess the 4-digit number without repeating digits: ")
             guess = readLine() ?: ""
@@ -24,17 +22,17 @@ fun main() {
         for (i in 0..3) {
             val num = guess[i].toString()
             if (num in randomNum) {
-                n++
+                n += 1
             }
             if (num == randomNum[i].toString()) {
-                m++
+                m += 1
             }
         }
 
-        println("$n:$m")
+        println("Output $n : $m ")
 
         if (m == 4) {
-            isGameOver = true
+            guessRight = true
             println("Congratulations, you guessed the correct number!")
         } else {
             guess = ""
